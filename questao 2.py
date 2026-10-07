@@ -2,7 +2,6 @@ import json
 
 class ControleEstoque:
     def __init__(self, dados_iniciais):
-        # Mapeia os produtos por código para facilitar a busca
         self.estoque = {item["codigoProduto"]: item for item in dados_iniciais["estoque"]}
         self.movimentacoes = []
 
@@ -28,7 +27,6 @@ class ControleEstoque:
             print("\n[Erro] Tipo de movimentação inválido. Use 'entrada' ou 'saida'.")
             return False
         
-        # Registra a movimentação bem-sucedida
         registro = {
             "id": id_movimentacao,
             "codigoProduto": codigo_produto,
@@ -46,7 +44,6 @@ class ControleEstoque:
         print(f"-> Nova Quantidade em Estoque: {produto['estoque']} unidades\n")
         return True
 
-# Dados iniciais do estoque fornecidos no desafio
 dados_estoque = {
 	"estoque": [
 	  { "codigoProduto": 101, "descricaoProduto": "Caneta Azul", "estoque": 150 },
@@ -57,7 +54,6 @@ dados_estoque = {
 	]
 }
 
-# Execução interativa
 if __name__ == "__main__":
     sistema = ControleEstoque(dados_estoque)
     contador_id = 1
@@ -75,14 +71,12 @@ if __name__ == "__main__":
         try:
             codigo = int(input("Digite o código do produto: "))
             
-            # Validação imediata do código do produto
             if codigo not in sistema.estoque:
                 print(f"\n[Erro] O código informado não existe.\n")
-                continue  # Retorna ao início do loop
+                continue
             
             tipo = input("Digite o tipo de movimentação ('entrada' ou 'saida'): ").strip().lower()
             
-            # Definição automática da descrição com base no tipo informado
             if tipo == "entrada":
                 descricao = "Compra de reposição"
             elif tipo == "saida":
