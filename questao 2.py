@@ -1,5 +1,3 @@
-import json
-
 class ControleEstoque:
     def __init__(self, dados_iniciais):
         self.estoque = {item["codigoProduto"]: item for item in dados_iniciais["estoque"]}
