@@ -6,18 +6,15 @@ def calcular_juros_interativo():
     print("="*40)
     
     try:
-        # Entrada do valor monetário
         valor_str = input("Digite o valor original do título (R$): ").strip().replace(',', '.')
         valor_original = float(valor_str)
         
-        # Entrada da data de vencimento
         data_vencimento_str = input("Digite a data de vencimento (Formato AAAA-MM-DD ou DD/MM/AAAA): ").strip()
         
     except ValueError:
         print("\n[Erro] Valor original inválido. Use apenas números (ex: 1500.50).")
         return
 
-    # Tenta identificar o formato da data informado pelo usuário
     data_vencimento = None
     for fmt in ("%Y-%m-%d", "%d/%m/%Y"):
         try:
@@ -45,7 +42,6 @@ def calcular_juros_interativo():
         print("-" * 40)
         return
     
-    # Regra: Multa de 2,5% ao dia sobre o valor original
     taxa_diaria = 0.025
     valor_juros = valor_original * taxa_diaria * dias_atraso
     valor_total = valor_original + valor_juros
@@ -56,6 +52,5 @@ def calcular_juros_interativo():
     print(f"Valor Total Atual:  R$ {valor_total:.2f}")
     print("-" * 40)
 
-# Execução interativa
 if __name__ == "__main__":
     calcular_juros_interativo()
