@@ -1,5 +1,3 @@
-import json
-
 dados_vendas = {
   "vendas": [
     { "vendedor": "João Silva", "valor": 1200.50 },
